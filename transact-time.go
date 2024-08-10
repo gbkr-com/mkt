@@ -6,6 +6,7 @@ import (
 )
 
 // HavingTransactTime is the interface required for [SortRecentFirst].
+// TransactTime is FIX field 60.
 type HavingTransactTime interface {
 	TransactTime() time.Time
 }

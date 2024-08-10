@@ -17,9 +17,9 @@ func TestQuote(t *testing.T) {
 	decimal200 := decimal.New(200, 0)
 
 	quote := &Quote{
-		Bid:     decimal42,
+		BidPx:   decimal42,
 		BidSize: decimal100,
-		Ask:     decimal43,
+		AskPx:   decimal43,
 		AskSize: decimal200,
 	}
 
@@ -42,7 +42,7 @@ func TestQuote(t *testing.T) {
 	assert.True(t, quote.Spread().Equal(decimal1))
 	assert.True(t, quote.MidPrice().Equal(decimal42_5))
 
-	quote.Bid = decimal.Zero
+	quote.BidPx = decimal.Zero
 
 	assert.True(t, quote.Spread().Equal(decimal.Zero))
 	assert.True(t, quote.MidPrice().Equal(decimal.Zero))

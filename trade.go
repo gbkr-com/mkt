@@ -3,12 +3,15 @@ package mkt
 import "github.com/shopspring/decimal"
 
 // A Trade in a market.
+//
+// Trade is principally a data object and very very little state, so its fields
+// are exported for convenience.
 type Trade struct {
-	Symbol  string
-	LastQty decimal.Decimal
-	LastPx  decimal.Decimal
-	Volume  decimal.Decimal
-	AvgPx   decimal.Decimal
+	Symbol      string          // FIX field 55
+	LastQty     decimal.Decimal // FIX field 32
+	LastPx      decimal.Decimal // FIX field 31
+	TradeVolume decimal.Decimal // FIX field 1020
+	AvgPx       decimal.Decimal // FIX field 6
 }
 
 // Accumulate the given trade with this. The LastQty and LastPx are copied
@@ -21,5 +24,5 @@ func (x *Trade) Accumulate(trade *Trade, precision int32) {
 		return
 	}
 	x.LastQty, x.LastPx = trade.LastQty, trade.LastPx
-	x.Volume, x.AvgPx = CumQtyAvgPx(x.Volume, x.AvgPx, trade.LastQty, trade.LastPx, precision)
+	x.TradeVolume, x.AvgPx = CumQtyAvgPx(x.TradeVolume, x.AvgPx, trade.LastQty, trade.LastPx, precision)
 }
