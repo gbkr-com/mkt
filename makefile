@@ -4,7 +4,7 @@ test:
 
 .PHONY: godoc
 godoc:
-	@~/go/bin/godoc -http=:8080&
+	@~/go/bin/godoc -http=:8080
 
 .PHONY: browse
 browse:
