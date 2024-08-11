@@ -20,7 +20,7 @@ func TestQuotePipeline(t *testing.T) {
 	quote.AskPx = decimal.New(43, 0)
 	quote.AskSize = decimal.New(100, 0)
 
-	pipeline.Publish(quote)
+	pipeline.Push(quote)
 
 	quote = pipeline.Get()
 
@@ -30,11 +30,11 @@ func TestQuotePipeline(t *testing.T) {
 	quote.AskPx = decimal.New(44, 0)
 	quote.AskSize = decimal.New(100, 0)
 
-	pipeline.Publish(quote)
+	pipeline.Push(quote)
 
 	// -------------------------------------------------------------------------
 
-	rcv := pipeline.Receive()
+	rcv := pipeline.Pop()
 	assert.NotNil(t, rcv)
 	assert.True(t, rcv.BidPx.Equal(decimal.New(43, 0)))
 

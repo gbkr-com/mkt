@@ -13,7 +13,7 @@ type Quote struct {
 	BidPx   decimal.Decimal // FIX field 132
 	BidSize decimal.Decimal // FIX field 134
 	AskPx   decimal.Decimal // FIX field 133, renamed from OfferPx
-	AskSize decimal.Decimal // FIX field 135 renamed from OfferSize
+	AskSize decimal.Decimal // FIX field 135, renamed from OfferSize
 }
 
 // Near returns the passive price and size for the given [Side].

@@ -27,8 +27,8 @@ func (x *QuotePipeline) Get() *Quote {
 	return x.pool.Get()
 }
 
-// Publish a quote.
-func (x *QuotePipeline) Publish(quote *Quote) {
+// Push a quote to the pipeline.
+func (x *QuotePipeline) Push(quote *Quote) {
 	x.queue.Push(quote)
 }
 
@@ -37,8 +37,8 @@ func (x *QuotePipeline) C() chan struct{} {
 	return x.queue.C()
 }
 
-// Receive a quote.
-func (x *QuotePipeline) Receive() *Quote {
+// Pop a quote from the pipeline.
+func (x *QuotePipeline) Pop() *Quote {
 	return x.queue.Pop()
 }
 
