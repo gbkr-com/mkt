@@ -3,6 +3,8 @@ module github.com/gbkr-com/mkt
 go 1.22.1
 
 require (
+	github.com/gbkr-com/utl v0.3.0
+	github.com/google/uuid v1.6.0
 	github.com/quickfixgo/enum v0.1.0
 	github.com/quickfixgo/field v0.1.0
 	github.com/shopspring/decimal v1.3.1
@@ -12,7 +14,6 @@ require (
 require (
 	github.com/armon/go-proxyproto v0.0.0-20210323213023-7e956b284f0a // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/gbkr-com/utl v0.2.0
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/compress v1.15.12 // indirect
 	github.com/montanaflynn/stats v0.6.6 // indirect

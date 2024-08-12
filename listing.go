@@ -22,25 +22,25 @@ type Listing struct {
 // Definition returns the [*Listing].
 func (x *Listing) Definition() *Listing { return x }
 
-// Listable defines all types which can embed ('extend') [Listing].
-type Listable interface {
+// AnyListing defines all types which can embed, or derive from, [Listing].
+type AnyListing interface {
 	Definition() *Listing
 }
 
-// A WhiteList has one or more [Listable] which can be traded.
-type WhiteList[T Listable] interface {
+// A WhiteList has one or more [AnyListing] which can be traded.
+type WhiteList[T AnyListing] interface {
 	Lookup(symbol string) T
 }
 
 // WhiteListWithReload is [WhiteList] which will reload T from another
 // source.
-type WhiteListWithReload[T Listable] struct {
+type WhiteListWithReload[T AnyListing] struct {
 	cache *utl.Cache[string, T]
 }
 
 // NewWhiteListWithReload returns a new [WhiteList] with the given time-to-live
 // for each entry and the given replace function.
-func NewWhiteListWithReload[T Listable](ttl time.Duration, replace func(string) (T, bool)) WhiteList[T] {
+func NewWhiteListWithReload[T AnyListing](ttl time.Duration, replace func(string) (T, bool)) WhiteList[T] {
 	return &WhiteListWithReload[T]{
 		cache: utl.NewCache(ttl, replace),
 	}
