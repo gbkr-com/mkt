@@ -26,3 +26,7 @@ func (x *Trade) Accumulate(trade *Trade, precision int32) {
 	x.LastQty, x.LastPx = trade.LastQty, trade.LastPx
 	x.TradeVolume, x.AvgPx = CumQtyAvgPx(x.TradeVolume, x.AvgPx, trade.LastQty, trade.LastPx, precision)
 }
+
+// TradeKey is a convenience function to use when constructing a
+// [utl.ConflatingQueue].
+func TradeKey(trade *Trade) string { return trade.Symbol }

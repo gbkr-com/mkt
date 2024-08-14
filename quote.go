@@ -66,6 +66,10 @@ func (x *Quote) MidPrice() decimal.Decimal {
 	return decimal.Avg(x.BidPx, x.AskPx)
 }
 
+// QuoteKey is a convenience function to use when constructing a
+// [utl.ConflatingQueue].
+func QuoteKey(quote *Quote) string { return quote.Symbol }
+
 // ZeroQuote will 'zero' all the fields in the [*Quote], never returning nil.
 // This is a convenience for using quotes in a [utl.Pool].
 func ZeroQuote(quote *Quote) *Quote {
