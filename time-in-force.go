@@ -66,7 +66,7 @@ func (x *TimeInForce) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// AsQuickFIX returns this side as a QuickFIX field.
+// AsQuickFIX returns this [TimeInForce] as a QuickFIX field.
 func (x TimeInForce) AsQuickFIX() field.TimeInForceField {
 	switch x {
 	case GTC:
