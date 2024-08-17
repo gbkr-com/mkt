@@ -4,10 +4,10 @@ import "github.com/google/uuid"
 
 // Order is the prototype for an order sent to a counterparty.
 type Order struct {
-	MsgType MsgType // FIX field 35
-	OrderID string  // FIX field 37
-	Side    Side    // FIX field 54
-	Symbol  string  // FIX field 55
+	MsgType MsgType `json:"msgType"` // FIX field 35
+	OrderID string  `json:"orderID"` // FIX field 37
+	Side    Side    `json:"side"`    // FIX field 54
+	Symbol  string  `json:"symbol"`  // FIX field 55
 }
 
 // Definition returns the [*Order].
