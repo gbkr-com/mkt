@@ -18,7 +18,7 @@ func TestOrderJSON(t *testing.T) {
 
 	b, err := json.Marshal(order)
 	assert.Nil(t, err)
-	assert.Equal(t, `{"MsgType":"NEW","OrderID":"abc","Side":"BUY","Symbol":"XRP-USD"}`, string(b))
+	assert.Equal(t, `{"msgType":"NEW","orderID":"abc","side":"BUY","symbol":"XRP-USD"}`, string(b))
 
 	var o Order
 	err = json.Unmarshal(b, &o)
