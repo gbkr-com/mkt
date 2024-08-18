@@ -66,7 +66,9 @@ func (x *TimeInForce) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// AsQuickFIX returns this [TimeInForce] as a QuickFIX field.
+// AsQuickFIX returns this [TimeInForce] as a QuickFIX field. If the value is not
+// one of those recognised, this function returns a valid value that will
+// likely be rejected by the counterparty, rather than panicking.
 func (x TimeInForce) AsQuickFIX() field.TimeInForceField {
 	switch x {
 	case GTC:
@@ -74,7 +76,7 @@ func (x TimeInForce) AsQuickFIX() field.TimeInForceField {
 	case IOC:
 		return fixIOC
 	default:
-		return field.NewTimeInForce(enum.TimeInForce_DAY)
+		return field.NewTimeInForce(enum.TimeInForce_AT_CROSSING)
 	}
 }
 

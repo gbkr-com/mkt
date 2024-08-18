@@ -3,7 +3,7 @@ module github.com/gbkr-com/mkt
 go 1.22.1
 
 require (
-	github.com/gbkr-com/utl v0.3.0
+	github.com/gbkr-com/utl v0.3.1
 	github.com/google/uuid v1.6.0
 	github.com/quickfixgo/enum v0.1.0
 	github.com/quickfixgo/field v0.1.0

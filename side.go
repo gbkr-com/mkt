@@ -111,7 +111,9 @@ func (x *Side) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// AsQuickFIX returns this side as a QuickFIX field.
+// AsQuickFIX returns this side as a QuickFIX field. If the value is not
+// one of those recognised, this function returns a valid value that will
+// likely be rejected by the counterparty, rather than panicking.
 func (x Side) AsQuickFIX() field.SideField {
 	switch x {
 	case Buy:

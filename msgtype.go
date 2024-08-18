@@ -31,7 +31,9 @@ func init() {
 	fixOrderReplace = field.NewMsgType(enum.MsgType_ORDER_CANCEL_REPLACE_REQUEST)
 }
 
-// String returns a short mnemonic for the [MsgType], avoiding the FIX values.
+// String returns a short mnemonic for the [MsgType], since the FIX values are
+// unfamiliar to many. If the FIX values are required, use [MsgType.AsQuickFIX]
+// instead.
 func (x MsgType) String() string {
 	switch x {
 	case OrderNew:
@@ -74,7 +76,9 @@ func (x *MsgType) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// AsQuickFIX returns this [MsgType] as a QuickFIX field.
+// AsQuickFIX returns this [MsgType] as a QuickFIX field. If the value is not
+// one of those recognised, this function returns a valid value that will
+// likely be rejected by the counterparty, rather than panicking.
 func (x MsgType) AsQuickFIX() field.MsgTypeField {
 	switch x {
 	case OrderNew:
