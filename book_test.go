@@ -12,7 +12,7 @@ func TestBookWhitelist(t *testing.T) {
 
 	book := NewBook("HEDGE", whitelist)
 
-	err := book.Traded("A", Buy, decimalOne, decimalOne)
+	err := book.Traded("A", Buy, DecimalOne, DecimalOne)
 	assert.NotNil(t, err)
 
 }

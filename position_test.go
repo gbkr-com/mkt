@@ -17,7 +17,7 @@ func TestTraded(t *testing.T) {
 
 	whitelist := NewWhiteList[*statlisting]()
 	whitelist.Add(&statlisting{
-		Listing:      Listing{Symbol: "A", ContractMultiplier: decimalOne},
+		Listing:      Listing{Symbol: "A", ContractMultiplier: DecimalOne},
 		MedTradeSize: decimal.Decimal{},
 	})
 
@@ -200,8 +200,8 @@ func TestPositionContractMultiplier(t *testing.T) {
 
 	position := NewPosition("WTI", whitelist)
 
-	position.Traded(Buy, decimalOne, decimal.New(4900, 0))
-	position.Traded(Sell, decimalOne, decimal.New(4901, 0))
+	position.Traded(Buy, DecimalOne, decimal.New(4900, 0))
+	position.Traded(Sell, DecimalOne, decimal.New(4901, 0))
 
 	memo := position.Memo()
 	assert.NotNil(t, memo)
@@ -212,7 +212,7 @@ func TestPositionContractMultiplier(t *testing.T) {
 func TestMark(t *testing.T) {
 
 	whitelist := NewWhiteList[*Listing]()
-	whitelist.Add(&Listing{Symbol: "A", ContractMultiplier: decimalOne})
+	whitelist.Add(&Listing{Symbol: "A", ContractMultiplier: DecimalOne})
 
 	decimal10 := decimal.New(10, 0)
 	decimal20 := decimal.New(20, 0)
@@ -269,7 +269,7 @@ func TestPositionChannel(t *testing.T) {
 	decimal100 := decimal.New(100, 0)
 
 	whitelist := NewWhiteList[*Listing]()
-	whitelist.Add(&Listing{Symbol: "A", ContractMultiplier: decimalOne})
+	whitelist.Add(&Listing{Symbol: "A", ContractMultiplier: DecimalOne})
 
 	c := make(chan *PositionMemo, 2)
 

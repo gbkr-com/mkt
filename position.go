@@ -144,7 +144,7 @@ func (x *Position[T]) Mark(price decimal.Decimal) (valuation, unrealised decimal
 func (x *Position[T]) fromListing() (precision int32, contractMultiplier decimal.Decimal) {
 
 	precision = 8
-	contractMultiplier = decimalOne
+	contractMultiplier = DecimalOne
 
 	listing, ok := x.whitelist.Lookup(x.symbol)
 	if ok {
