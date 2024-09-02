@@ -103,6 +103,42 @@ func (x OrdStatus) AsQuickFIX() field.OrdStatusField {
 	case OrdStatusPendingReplace:
 		return field.NewOrdStatus(enum.OrdStatus_PENDING_REPLACE)
 	default:
-		return field.NewOrdStatus(enum.OrdStatus_STOPPED)
+		return field.NewOrdStatus(enum.OrdStatus_SUSPENDED)
 	}
+}
+
+// OrdStatusFromFIX returns the equivalent [OrdStatus] from the QuickFIX field,
+// or zero if there is no equivalence.
+func OrdStatusFromFIX(ordStatus field.OrdStatusField) OrdStatus {
+	switch ordStatus.Value() {
+	case enum.OrdStatus_CANCELED:
+		return OrdStatusCanceled
+	case enum.OrdStatus_EXPIRED:
+		return OrdStatusExpired
+	case enum.OrdStatus_FILLED:
+		return OrdStatusFilled
+	case enum.OrdStatus_NEW:
+		return OrdStatusNew
+	case enum.OrdStatus_PARTIALLY_FILLED:
+		return OrdStatusPartiallyFilled
+	case enum.OrdStatus_PENDING_CANCEL:
+		return OrdStatusPendingCancel
+	case enum.OrdStatus_PENDING_NEW:
+		return OrdStatusPendingNew
+	case enum.OrdStatus_PENDING_REPLACE:
+		return OrdStatusPendingReplace
+	case enum.OrdStatus_REJECTED:
+		return OrdStatusRejected
+		//
+		// Unsupported cases.
+		//
+	case enum.OrdStatus_ACCEPTED_FOR_BIDDING,
+		enum.OrdStatus_CALCULATED,
+		enum.OrdStatus_DONE_FOR_DAY,
+		enum.OrdStatus_REPLACED,
+		enum.OrdStatus_STOPPED,
+		enum.OrdStatus_SUSPENDED:
+		return 0
+	}
+	return 0
 }

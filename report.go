@@ -7,12 +7,10 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-// Report is an augmented execution report from the counterparty. The report is
-// not just for fills and covers other events at the counterparty order level,
-// such as expiry.
+// Report is an augmented execution report from the counterparty.
 //
 // [Report.OrderID] is that known by the originator of the order, whereas
-// [Report.SecondaryOrderID] is usually assigned by the counterparty.
+// [Report.SecondaryOrderID] is that assigned by the counterparty.
 //
 // [Report.ExecInst] values are ignored except for 'e', meaning 'work to target
 // strategy'. If that is returned to the originator then it signals that the
@@ -33,7 +31,7 @@ type Report struct {
 }
 
 // WorkToTarget returns true if the report indicates the originator may
-// continue working.
+// continue sending requests.
 func (x *Report) WorkToTarget() bool {
 	return strings.Contains(x.ExecInst, "e")
 }
